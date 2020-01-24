@@ -1,3 +1,5 @@
+Abstract
+
 Cílem praktického semináře bude naučit se základním operacím s verzovacím systémem Git,
 a to hlavně v souvislostech s projekty Flow123d, Geomop, bgem...
 
