@@ -1,0 +1,409 @@
+\documentclass[10pt, xcolor=dvipsnames]{beamer} %[handout,red]
+
+\include{math_defs}
+
+\usepackage{graphicx,multimedia,hyperref,xmpmulti}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{bibunits}
+
+\usepackage{verbatim}
+
+% \usepackage[normalem]{ulem}
+
+
+% transparent objects
+\usepackage{transparent}
+
+\newcommand\Warning{%
+ \makebox[1.4em][c]{%
+ \makebox[0pt][c]{\raisebox{.1em}{\small!}}%
+ \makebox[0pt][c]{\color{red}\Large$\bigtriangleup$}}}%
+ 
+\begin{filecontents}{\jobname.bib}
+\input{../citace.bib}
+\end{filecontents}
+
+
+\def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
+
+% Templating stuff
+% \beamertemplatetransparentcovereddynamic
+%\colorlet{averagebackgroundcolor}{white}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[square]
+\setbeamertemplate{section in toc}[square]
+\setbeamercolor*{block title}{fg=white,bg=structure!75!black}
+\setbeamercolor*{block body}{bg=structure!10!averagebackgroundcolor}
+
+%\setbeamercolor*{block title example}{fg=white,bg=beamerexample!75!black}
+%\setbeamercolor*{block body example}{bg=beamerexample!10!averagebackgroundcolor}
+% \usepackage{beamerthemeshadow}
+%\setbeamertemplate{background canvas}{\includegraphics [width=0.3\paperwidth]{logo-cxi-cmyk-cz.pdf}}
+
+
+\setbeamertemplate{footline}{\includegraphics[width=\paperwidth]{fm_spojovaci.pdf}
+
+\vspace{-2.7mm}
+
+\hspace{5mm}{\bf\inserttitle~ \textcolor{structure}{$\boldsymbol{|}$} \insertdate}
+
+\vspace{-3.5mm}
+
+\hspace{\stretch{1}} \textcolor{white}{\insertframenumber/\inserttotalframenumber} \hspace{2mm}
+
+\vspace{3mm}
+}
+
+\definecolor{cxi}{RGB}{193,10,43}
+%\definecolor{fm}{RGB}{238,127,0}
+%\definecolor{fm}{cmyk}{0.0, 0.563, 1.0, 0.129}
+%\definecolor{fm}{HTML}{DE6100}
+\definecolor{fm}{RGB}{0,106,179}
+\definecolor{mycolor}{HTML}{00CC00}
+%\setbeamercolor{structure}{fg=cxi}
+\setbeamercolor{structure}{fg=fm}
+\setbeamertemplate{frametitle}{\begin{flushleft}\bf\large\insertframetitle\end{flushleft}\par}
+\beamertemplateheadempty
+\beamertemplatenavigationsymbolsempty
+\beamertemplateshadowblocks
+
+\renewcommand{\titlepage}{
+{\bf\Large\inserttitle}\\\vspace{3mm}\textit{\insertauthor~ \textcolor{structure}{$\boldsymbol{|}$} \insertdate}
+
+\vspace{1.5cm}
+  
+\textcolor{structure}{\Large $\boldsymbol{\star}$}~{\bf\large Seminář NTI/iNTEC}
+}
+
+% % uncomment if you want outline after each frame
+% \AtBeginSection[]
+% {
+% \frame{\frametitle{Outline}
+%   \tableofcontents[currentsection]
+% }
+% \addtocounter{framenumber}{-1} 
+% }
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+% % ***************************************** SYMBOLS
+% \def\div{{\rm div}}
+% \def\Lapl{\Delta}
+% \def\grad{\nabla}
+% \def\supp{{\rm supp}}
+% \def\dist{{\rm dist}}
+% %\def\chset{\mathbbm{1}}
+% \def\chset{1}
+% 
+% \def\Tr{{\rm Tr}}
+% \def\sgn{{\rm sgn}}
+% \def\to{\rightarrow}
+% \def\weakto{\rightharpoonup}
+% \def\imbed{\hookrightarrow}
+% \def\cimbed{\subset\subset}
+% \def\range{{\mathcal R}}
+% \def\leprox{\lesssim}
+% \def\argdot{{\hspace{0.18em}\cdot\hspace{0.18em}}}
+% \def\Distr{{\mathcal D}}
+% \def\calK{{\mathcal K}}
+% \def\FromTo{|\rightarrow}
+% \def\convol{\star}
+% \def\impl{\Rightarrow}
+% \DeclareMathOperator*{\esslim}{esslim}
+% \DeclareMathOperator*{\esssup}{ess\,sup}
+% \DeclareMathOperator{\ess}{ess}
+% \DeclareMathOperator{\osc}{osc}
+% \DeclareMathOperator{\curl}{curl}
+% 
+% %\def\Ess{{\rm ess}}
+% %\def\Exp{{\rm exp}}
+% %\def\Implies{\Longrightarrow}
+% %\def\Equiv{\Longleftrightarrow}
+% % ****************************************** GENERAL MATH NOTATION
+% \def\Real{{\rm\bf R}}
+% \def\Rd{{{\rm\bf R}^{\rm 3}}}
+% \def\RN{{{\rm\bf R}^N}}
+% \def\D{{\mathbb D}}
+% \def\Nnum{{\mathbb N}}
+% \def\Measures{{\mathcal M}}
+% \def\d{\,{\rm d}}               % differential
+% \def\sdodt{\genfrac{}{}{}{1}{\rm d}{{\rm d}t}}
+% \def\dodt{\genfrac{}{}{}{}{\rm d}{{\rm d}t}}
+% 
+% \def\vc#1{\mathbf{\boldsymbol{#1}}}     % vector
+% \def\tn#1{{\mathbb{#1}}}    % tensor
+% \def\abs#1{\lvert#1\rvert}
+% \def\Abs#1{\bigl\lvert#1\bigr\rvert}
+% \def\bigabs#1{\bigl\lvert#1\bigr\rvert}
+% \def\Bigabs#1{\Big\lvert#1\Big\rvert}
+% \def\ABS#1{\left\lvert#1\right\rvert}
+% \def\norm#1{\bigl\Vert#1\bigr\Vert} %norm
+% \def\close#1{\overline{#1}}
+% \def\inter#1{#1^\circ}
+% \def\ol#1{\overline{#1}}
+% \def\ul#1{\underline{#1}}
+% \def\eqdef{\mathrel{\mathop:}=}     % defining equivalence
+% \def\where{\,|\,}                    % "where" separator in set's defs
+% \def\timeD#1{\dot{\overline{{#1}}}}
+% \def\avg#1{\langle{#1}\rangle}     % average
+% 
+% % ******************************************* USEFULL MACROS
+% \def\RomanEnum{\renewcommand{\labelenumi}{\rm (\roman{enumi})}}   % enumerate by roman numbers
+% \def\rf#1{(\ref{#1})}                                             % ref. shortcut
+% \def\prtl{\partial}                                        % partial deriv.
+% \def\Names#1{{\scshape #1}}
+% \def\rem#1{{\parskip=0cm\par!! {\sl\small #1} !!}}
+% 
+% \def\Xint#1{\mathchoice
+% {\XXint\displaystyle\textstyle{#1}}%
+% {\XXint\textstyle\scriptstyle{#1}}%
+% {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+% {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+% \!\int}
+% \def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+% \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+% \def\ddashint{\Xint=}
+% \def\dashint{\Xint-}
+% 
+% % ******************************************* DOCUMENT NOTATIONS
+% % document specific
+% \def\rh{\varrho}
+% \def\vl{{\vc{u}}}
+% \def\th{\vartheta}
+% \def\vx{\vc{x}}
+% \def\vX{\vc{X}}
+% \def\vr{\vc{r}}
+% \def\veta{\vc{\eta}}
+% \def\dx{\,\d\vx}
+% \def\dt{\,\d t}
+% \def\bulk{\zeta}
+% \def\cS{\close{S}}
+% \def\eps{\varepsilon}
+% \def\phi{\varphi}
+% \def\Bog{{\mathcal B}}
+% \def\Riesz{{\mathcal R}}
+% \def\distr{\mathcal D}
+% \def\Item{$\bullet$}
+% 
+% \def\MEtst{\mathcal T}
+%***************************************************************************
+\setbeamercolor{my blue}{fg=blue}
+\def\blue#1{{\usebeamercolor[fg]{my blue} #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%MY:
+
+%TABLE
+\usepackage{colortbl} %colored table
+\usepackage{hhline} %double hlines
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{subfig}
+
+\newcommand{\figpath}{../graphics/}
+\newcommand{\oldresults}{old_results/}
+\newcommand{\results}{th_results/}
+% \usepackage{amsmath, amsthm, amssymb}
+% \usepackage{mathtools}
+% \usepackage{esint}
+
+%DATES:
+\newcommand{\dst}{\textsuperscript{st}}
+\newcommand{\dnd}{\textsuperscript{nd}}
+\newcommand{\drd}{\textsuperscript{rd}}
+\newcommand{\dth}{\textsuperscript{th}}
+
+%COLORFUL UNDERLINE
+\newcommand{\rul}[2]{\textcolor{#1}{\underline{\textcolor{black}{#2}}}}
+
+%FONT SIZES available:
+%     \tiny
+%     \scriptsize
+%     \footnotesize
+%     \small
+%     \normalsize
+%     \large
+%     \Large
+%     \LARGE
+%     \huge
+%     \Huge 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+% SETTING TITLE PAGE MEMBERS
+\title{Seznámení s verzovacím systémem Git\\
+      \textcolor{lightgray}{v souvislosti s Flow123d, Geompop, bgem}}
+\author{{\bf Pavel Exner}}
+\institute{TECHNICAL UNIVERSITY OF LIBEREC}
+\date{29 leden 2019}
+
+
+\begin{document}
+
+
+% { %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   CZECH TITLEPAGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \setbeamertemplate{background canvas}{\includegraphics [width=0.5\paperwidth]{logos/logo-cxi-cmyk-cz.pdf}}
+%   \setbeamertemplate{footline}{\includegraphics[width=\paperwidth]{logos/cxi-spojovaci.png}
+% 
+%     \vspace{-6mm}
+% 
+%     \hspace{9mm}
+%     %{\bf TECHNICKÁ UNIVERZITA V LIBERCI \textcolor{structure}{$\boldsymbol{|}$ Ústav pro nanomateriály, pokročilé technologie a inovace}}
+%     Studentská 1402/2 \textcolor{structure}{$\boldsymbol{|}$} 461 17 Liberec 1 \textcolor{structure}{$\boldsymbol{|}$} www.cxi.tul.cz
+% 
+%     \vspace{-3.1mm}
+% 
+%     \hspace{\stretch{1}} \textcolor{white}{\insertframenumber/\inserttotalframenumber} \hspace{2mm}
+% 
+%     \vspace{3mm}
+%     }
+%   \frame{
+% 	\vspace{1cm}
+% 	\titlepage
+%   }
+% } %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   END CZECH TITLEPAGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+{ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   ENGLISH TITLEPAGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \setbeamertemplate{background canvas}
+  {
+    \hspace{5mm}
+    \includegraphics [width=0.5\paperwidth]{logo-fm-cmyk-en.pdf}
+  }
+%   {
+%   \hspace{20pt}
+%     \vspace{15pt}
+%     
+%     \includegraphics [width=0.3\paperwidth]{logo-flow-123d-color.pdf} \hspace{40pt}
+%     \includegraphics [width=0.4\paperwidth]{../logos/logo-fm-cmyk-en.pdf}
+%     \hspace{5mm}
+%     \includegraphics [width=0.5\paperwidth]{../logos/logo-fm-cmyk-en.pdf}
+%   }
+  \setbeamertemplate{footline}{\includegraphics[width=\paperwidth]{fm_spojovaci.pdf}
+
+%     \vspace{-2.3mm}
+    \vspace{-2.3mm}
+
+    \hspace{9mm}
+    %{\bf TECHNICAL UNIVERSITY OF LIBEREC \textcolor{structure}{$\boldsymbol{|}$ Institue for Nanomaterials, Advanced Technologies and Innovation}}
+    %Studentská 1402/2 \textcolor{structure}{$\boldsymbol{|}$} 461 17 Liberec 1 \textcolor{structure}{$\boldsymbol{|}$} www.cxi.tul.cz
+    Studentská 1402/2 \textcolor{structure}{$\boldsymbol{|}$} 461 17 Liberec 1 \textcolor{structure}{$\boldsymbol{|}$} www.fm.tul.cz
+
+    \vspace{-3.5mm}
+
+    \hspace{\stretch{1}} \textcolor{white}{\insertframenumber/\inserttotalframenumber} \hspace{2mm}
+
+    \vspace{3mm}
+    }
+  \frame{
+    \vspace{1cm}
+    \titlepage
+  }
+} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  END ENGLISH TITLEPAGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \begin{frame}
+%   \begin{figure}
+%         \vspace{-5pt}
+%         \begin{center}   
+%           \hspace{-10pt}
+%           \includegraphics[width=1.05\textwidth]{\figpath liberec/mapa_lbc.pdf}
+%         \end{center}
+%   \end{figure}
+%   
+%   \begin{overlayarea}{\linewidth}{\textwidth}
+%   \onslide<1>
+%     {
+%         \vspace{-6.5cm}
+%         \hspace{5.6cm}\includegraphics[width=0.29\textwidth]{\figpath liberec/13-Jested.jpg}  
+%         
+%         \vspace{-4.3cm}
+%         \hspace{7cm} \includegraphics[width=0.14\textwidth]{TUL_logo.pdf}
+%     }
+%     
+%   \end{overlayarea}
+% \end{frame}
+
+\begin{frame}
+  \frametitle{Proč používat verzovací systém?}
+  
+  \begin{itemize}
+    \setlength\itemsep{10pt}
+    \item spolupracuji v týmu a chci umět kombinovat změny na jednom souboru od více uživatelů
+    \item chci mít zálohu
+    \item chci mít přístup k historii změn (návrat funkčnímu stavu, slepé uličky)
+    \item chci mít zdokumentovanou historii změn
+    \item chci se podílet na open-source projektech
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{A proč i já, uživatel?}
+  
+  \vspace{10pt}
+  \begin{itemize}
+    \setlength\itemsep{10pt}
+    \item chci zálohovat/sdílet své skripty, zdrojáky
+    \item chci, aby ostatní mohli vylepšit můj skript
+    \item chci pomoct ostatním vylepšit jejich skript
+    \item nechci dokola vynalézat kolo
+    \item píšu/píšeme článek
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Princip verzování změn}
+  
+  \vspace{10pt}
+  \begin{itemize}
+    \setlength\itemsep{10pt}
+    \item s
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Git a Github}
+  
+  \Put(200,0){\includegraphics[width=0.25\textwidth]{Git-Logo-2Color.eps}}
+  \begin{itemize}
+    \setlength\itemsep{10pt}
+    \item s
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Git a Github}
+  
+  \verb'git clone https://github.com/Paulie14/git-seminar.git'\\
+  {\color{gray} \verb'git clone git@github.com:Paulie14/git-seminar.git ./my_repos' }\\
+  \verb'git checkout master' \hfill\textcolor{gray}{přepni se do hlavní větve}\\
+  \verb'git pull' \hfill\textcolor{gray}{stáhni aktuální stav vzdáleného repozitáře}\\
+  \verb'git checkout -b PE_new_feature'\\
+  \textcolor{gray}{$\ldots$}\\
+  \textcolor{gray}{\emph{kóduju o sto šest}}\\
+  \textcolor{gray}{$\ldots$}\\
+  \verb'git status' \hfill\textcolor{gray}{ukaž, které soubory se změnily}\\
+  \verb'git diff' \hfill\textcolor{gray}{ukaž konkrétní změny v souborech}\\
+  \verb'git add my_briliant_script.py' \hfill\textcolor{gray}{přidej provedenou změnu}\\
+  \verb'git status' \hfill\textcolor{gray}{zkontroluj změny ve stage}\\
+  \verb'git commit -m "Popis zmeny."' \hfill\textcolor{gray}{proveď změnu a přidej popis}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Git Cola}
+  
+  \Put(200,0){\includegraphics[width=0.25\textwidth]{Git-Cola.png}}
+  \begin{itemize}
+    \item \url{https://git-cola.github.io/}
+    \item GUI for Git
+  \end{itemize}
+  
+  \vspace{1cm}
+  \includegraphics[width=0.48\textwidth]{git-cola-screen.png}
+  \includegraphics[width=0.48\textwidth]{git-cola-DAG-screen.png}
+\end{frame}
+
+
+\end{document}
