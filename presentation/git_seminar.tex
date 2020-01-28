@@ -330,10 +330,14 @@
     \setlength\itemsep{10pt}
     \item spolupracuji v týmu a chci umět kombinovat změny na jednom souboru od více uživatelů
     \item chci mít zálohu
-    \item chci mít přístup k historii změn (návrat funkčnímu stavu, slepé uličky)
+    \item chci mít přístup k historii změn (návrat k funkčnímu stavu, slepé uličky)
     \item chci mít zdokumentovanou historii změn
     \item chci se podílet na open-source projektech
   \end{itemize}
+  
+  \vspace{0.5cm}
+  \fbox{\parbox{\textwidth}{\centering Především textové soubory!}}
+  
 \end{frame}
 
 
@@ -343,22 +347,29 @@
   \vspace{10pt}
   \begin{itemize}
     \setlength\itemsep{10pt}
-    \item chci zálohovat/sdílet své skripty, zdrojáky
-    \item chci, aby ostatní mohli vylepšit můj skript
-    \item chci pomoct ostatním vylepšit jejich skript
+    \item chci zálohovat/sdílet svůj kód
+    \item chci, aby ostatní mohli vylepšit můj kód
+    \item chci pomoct ostatním vylepšit jejich kód
     \item nechci dokola vynalézat kolo
-    \item píšu/píšeme článek
+    \item píšu/píšeme publikaci
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Princip verzování změn}
+  \frametitle{Princip verzování změn I}
   
   \vspace{10pt}
-  \begin{itemize}
-    \setlength\itemsep{10pt}
-    \item s
-  \end{itemize}
+  \centering
+  \includegraphics[width=0.75\textwidth]{staging_index.png}
+
+\end{frame}
+\begin{frame}
+  \frametitle{Princip verzování změn II}
+  
+  \vspace{10pt}
+  \centering
+  \includegraphics[width=0.75\textwidth]{file_lifecycle.png}
+
 \end{frame}
 
 
@@ -368,28 +379,103 @@
   \Put(200,0){\includegraphics[width=0.25\textwidth]{Git-Logo-2Color.eps}}
   \begin{itemize}
     \setlength\itemsep{10pt}
-    \item s
+    \item práva k repozitáři -- owner / contributor / others
   \end{itemize}
 
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Git a Github}
+  \frametitle{\texttt{https} vs \texttt{ssh} access}
+  
+  \Put(200,100){\includegraphics[width=0.25\textwidth]{Git-Logo-2Color.eps}}
+  \begin{itemize}
+    \setlength\itemsep{10pt}
+    \item https připojení (každá akce ve směru local$\rightarrow$remote vyžaduje přihlášení)
+    \item SSH generování klíče (Linux shell, Git bash):\\
+        \begin{enumerate} \setlength\itemsep{6pt}
+          \item \verb'ssh-keygen -t rsa -b 4096 -C "pavel.exner@tul.cz"'{\color{gray}\verb' -f my_rsa'}
+          \item vygenerováno: \verb'id_rsa' a \verb'id_rsa.pub' v adr. \verb'~/.ssh/'
+          \item zkopírovat veřejný klíč -- obsah \verb'id_rsa.pub' -- do:\\ Github $\rightarrow$ Settings $\rightarrow$ SSH and GPG keys $\rightarrow$ New SSH key
+        \end{enumerate}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Git commands I}
   
   \verb'git clone https://github.com/Paulie14/git-seminar.git'\\
-  {\color{gray} \verb'git clone git@github.com:Paulie14/git-seminar.git ./my_repos' }\\
+  {\color{gray} \verb'git clone git@github.com:Paulie14/git-seminar.git ./my_repos' }
+  
   \verb'git checkout master' \hfill\textcolor{gray}{přepni se do hlavní větve}\\
   \verb'git pull' \hfill\textcolor{gray}{stáhni aktuální stav vzdáleného repozitáře}\\
-  \verb'git checkout -b PE_new_feature'\\
+  \verb'git checkout -b PE_new_feature' \hfill\textcolor{gray}{odděl svoji vývojou větev}\\
+  
+  \vspace{0.5cm}
   \textcolor{gray}{$\ldots$}\\
   \textcolor{gray}{\emph{kóduju o sto šest}}\\
+  \textcolor{gray}{$\ldots$}\\
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Git commands II}
+  
   \textcolor{gray}{$\ldots$}\\
   \verb'git status' \hfill\textcolor{gray}{ukaž, které soubory se změnily}\\
   \verb'git diff' \hfill\textcolor{gray}{ukaž konkrétní změny v souborech}\\
   \verb'git add my_briliant_script.py' \hfill\textcolor{gray}{přidej provedenou změnu}\\
   \verb'git status' \hfill\textcolor{gray}{zkontroluj změny ve stage}\\
-  \verb'git commit -m "Popis zmeny."' \hfill\textcolor{gray}{proveď změnu a přidej popis}
+  \verb'git commit -m "Popis zmeny."' \hfill\textcolor{gray}{proveď změnu a přidej popis}\\
+  \textcolor{gray}{$\ldots$}
+  
+  \vspace{0.5cm}
+  {\color{red}\rule{\textwidth}{1pt}}
+  \verb'git push origin PE_new_feature'\\ \hfill\textcolor{gray}{pošli změny do vzdáleného repozitáře}\\
+  \textcolor{gray}{$\ldots$}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Git commands III}
+  
+  \textcolor{gray}{$\ldots$}\\
+  \verb'git checkout master' \hfill\textcolor{gray}{přepni se do hlavní větve}\\
+  \verb'git pull' \hfill\textcolor{gray}{stáhni aktuální stav vzdáleného repozitáře}\\
+  \verb'git checkout PE_new_feature' \hfill\textcolor{gray}{přepni do své vývojové větve}\\
+  
+  \vspace{0.5cm}
+  \verb'git merge master' \hfill\textcolor{gray}{proveď merge z master větve}\\
+  \textcolor{gray}{$\ldots$}\textcolor{gray}{vyřeš konflikty}\textcolor{gray}{$\ldots$}\\
+  {\color{gray} \verb'git stage'}\\
+  {\color{gray} \verb'git commit'}
+  
+  \vspace{0.5cm}
+  {\color{red}\rule{\textwidth}{1pt}}
+  \verb'git push origin PE_new_feature'\\ \hfill\textcolor{gray}{pošli merge do vzdáleného repozitáře}\\
+  \textcolor{gray}{Vytvoř Pull request}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Git commands IV}
+  
+  Diff tool: např. Kdiff3 (\url{http://kdiff3.sourceforge.net/})
+  
+  \vspace{0.5cm}
+  Nastavení nástroje pro \verb'merge':
+  
+  \vspace{0.5cm}
+  \verb'git config --global --add merge.tool kdiff3'\\
+  \verb'git config --global --add mergetool.kdiff3.path'\\
+      \hfill\verb"C:/Program Files/KDiff3/kdiff3.exe"'\\
+  
+  \vspace{0.5cm}
+  \verb'git config --global --add diff.guitool kdiff3'\\
+  \verb'git config --global --add difftool.kdiff3.path'\\
+      \hfill\verb"C:/Program Files/KDiff3/kdiff3.exe"'
+
+\end{frame}
+
+
 
 \begin{frame}[fragile]
   \frametitle{Git Cola}
@@ -405,5 +491,17 @@
   \includegraphics[width=0.48\textwidth]{git-cola-DAG-screen.png}
 \end{frame}
 
+
+\begin{frame}
+  \frametitle{Repozitáře}
+
+  \begin{itemize}
+    \setlength\itemsep{15pt}
+    \item \url{https://github.com/flow123d/flow123d}
+    \item \url{https://github.com/GeoMop/GeoMop}
+    \item \url{https://github.com/GeoMop/bgem}
+  \end{itemize}
+
+\end{frame}
 
 \end{document}
