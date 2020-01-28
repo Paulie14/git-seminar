@@ -356,6 +356,22 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Git a Github}
+  
+  \Put(200,0){\includegraphics[width=0.25\textwidth]{Git-Logo-2Color.eps}}
+  \begin{itemize}
+    \setlength\itemsep{10pt}
+    \item distribuovaný systém správy verzí
+    \item free \& open source
+    \item nelineární vývoj -- snadné vytváření a slučování větví
+    \item přístup přes protokoly http, ftp, ssh
+    \item podpora jiných systémů (cvs, svn)
+    \item práva k repozitáři -- owner / contributor / others
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
   \frametitle{Princip verzování změn I}
   
   \vspace{10pt}
@@ -372,17 +388,6 @@
 
 \end{frame}
 
-
-\begin{frame}
-  \frametitle{Git a Github}
-  
-  \Put(200,0){\includegraphics[width=0.25\textwidth]{Git-Logo-2Color.eps}}
-  \begin{itemize}
-    \setlength\itemsep{10pt}
-    \item práva k repozitáři -- owner / contributor / others
-  \end{itemize}
-
-\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{\texttt{https} vs \texttt{ssh} access}
@@ -502,6 +507,21 @@
     \item \url{https://github.com/GeoMop/bgem}
   \end{itemize}
 
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Issues a šablony}
+
+  \begin{itemize}
+    \setlength\itemsep{15pt}
+    \item v repozitářích vytvořeny šablony pro Issue (\verb'.github/ISSUE_TEMPLATES/*.md')
+    \item automaticky přiřadí \verb'Assignee', \verb'Label', $\ldots$
+    \item obsahuje defaultní název a strukturu Issue
+  \end{itemize}
+
+  \begin{center}
+  \includegraphics[width=0.65\textwidth]{issue_template.png}
+  \end{center}
 \end{frame}
 
 \end{document}
