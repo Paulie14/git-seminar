@@ -1,0 +1,14 @@
+Abstract
+
+Cílem praktického semináře bude naučit se základním operacím s verzovacím systémem Git,
+a to hlavně v souvislostech s projekty Flow123d, Geomop, bgem...
+
+Seznámíme se s prostředím Githubu, stránkami konkrétních projektů a repozitářů.
+Vysvětlíme si, co je zde důležité z pohledu uživatelů vyvíjených softwarů,
+jak psát Issues, bug reporty či nové požadavky.
+Vysvětlíme si základní principy verzovacího systému, správu vývojových větví a změn.
+Na testovacím repozitáři si vyzkoušíme základní Git příkazy, jak si stáhnout repozitář, jak si oddělit vlastní vývojovou větev
+nebo provést Fork, a jak provést vlastní změny.
+
+Jako prerekvizitu bude vhodné, aby měl každý účastník vytvořený účet na Github (https://github.com/)
+a měl nainstalovaný software Git (https://git-scm.com/) na svém operačním systému.
