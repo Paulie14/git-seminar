@@ -358,15 +358,20 @@
 \begin{frame}
   \frametitle{Git a Github}
   
-  \Put(200,0){\includegraphics[width=0.25\textwidth]{Git-Logo-2Color.eps}}
-  \begin{itemize}
-    \setlength\itemsep{10pt}
+  \Put(200,20){\includegraphics[width=0.25\textwidth]{Git-Logo-2Color.eps}}
+  \begin{itemize} \setlength\itemsep{10pt}
     \item distribuovaný systém správy verzí
     \item free \& open source
     \item nelineární vývoj -- snadné vytváření a slučování větví
     \item přístup přes protokoly http, ftp, ssh
     \item podpora jiných systémů (cvs, svn)
+    \item bohaté webové rozhraní Github
+  \end{itemize}
+  
+  \vspace{0.5cm}
+  \begin{itemize} \setlength\itemsep{10pt}
     \item práva k repozitáři -- owner / contributor / others
+    \item fork - kopie repozitáře do vlastního repozitáře
   \end{itemize}
 
 \end{frame}
@@ -522,6 +527,36 @@
   \begin{center}
   \includegraphics[width=0.65\textwidth]{issue_template.png}
   \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Your turn!}
+
+  \begin{itemize}\setlength\itemsep{10pt}
+    \item proveďte Fork repozitáře \verb'bgem'
+    \item naklonujte si svůj nový Fork
+    \item oddělte si větev
+    \item proveďte změny
+    \item odešlete změny v nové větvi na Remote
+  \end{itemize}
+  
+  {\color{green}\rule{\textwidth}{1pt}}
+  \begin{itemize}\setlength\itemsep{10pt}
+    \item otevřete si repozitář v Pycharmu a zprovozněte
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Pro pokročilé}
+
+  \begin{itemize}
+    \setlength\itemsep{15pt}
+    \item slučování větví
+    \item pull request
+    \item pull request z Forku do původního repozitáře
+    \item submoduly (repozitář součástí repozitáře)
+  \end{itemize}
 \end{frame}
 
 \end{document}
